@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+
+import "./App.css";
+import { Header } from "./components/Header";
+import { Inbox } from "./pages/Inbox";
+import { Home } from "./pages/Home";
+import { Sent } from "./pages/Sent";
+import { EmailMessage } from "./pages/EmailMessage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/inbox" element={<Inbox />}></Route>
+        <Route path="/sent" element={<Sent />}></Route>
+        <Route path="/inbox/:emailId" element={<EmailMessage />}></Route>
+        <Route path="/sent/:emailId" element={<EmailMessage />}></Route>
+      </Routes>
     </div>
   );
 }
